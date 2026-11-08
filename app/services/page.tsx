@@ -1,7 +1,9 @@
+import Services from "@/components/Services";
+
 export default function ServicesPage() {
     return (
-        <div>
-            <h1>Services</h1>
-        </div>
+        <main className="min-h-screen bg-white">
+            <Services />
+        </main>
     );
 }

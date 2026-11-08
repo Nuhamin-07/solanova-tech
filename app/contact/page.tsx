@@ -1,7 +1,9 @@
+import ContactSection from "@/components/ContactSection";
+
 export default function ContactPage() {
     return (
-        <div>
-            <h1>Contact</h1>
-        </div>
+        <main className="min-h-screen bg-white">
+            <ContactSection />
+        </main>
     );
 }

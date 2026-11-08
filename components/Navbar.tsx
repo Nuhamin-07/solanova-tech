@@ -2,16 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { SolanovaSwirlIcon } from "./Hero";
 
 export default function Navbar() {
-    const pathname = usePathname();
-
     const navLinks = [
         { label: "Home", href: "/" },
-        { label: "Services", href: "/services" },
-        { label: "Contact", href: "/contact" },
+        { label: "Services", href: "/#services" },
+        { label: "Why choose us", href: "/#why-us" },
+        { label: "Projects", href: "/#portfolio" },
+        { label: "Contact", href: "/#contact" },
     ];
 
     return (
@@ -30,35 +28,33 @@ export default function Navbar() {
                 </Link>
 
                 {/* Desktop Navigation Links */}
-                <nav className="hidden md:flex items-center gap-8">
+                <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-6">
                     {navLinks.map((link) => {
-                        const isActive =
-                            link.href === "/"
-                                ? pathname === "/"
-                                : pathname.startsWith(link.href);
-
                         return (
                             <Link
                                 key={link.label}
                                 href={link.href}
-                                className={`relative py-1 text-sm font-medium transition-colors ${isActive
-                                    ? "text-[#0099cc] font-semibold"
-                                    : "text-slate-700 hover:text-[#0099cc]"
-                                    }`}
+                                className="py-1 text-sm font-medium text-slate-700 transition-colors hover:text-[#0099cc]"
                             >
                                 {link.label}
-                                {isActive && (
-                                    <span className="absolute bottom-0 left-0 h-[2px] w-full rounded-full bg-[#0099cc]" />
-                                )}
                             </Link>
                         );
                     })}
                 </nav>
 
+                <details className="relative lg:hidden">
+                    <summary className="cursor-pointer list-none rounded-lg border border-slate-200 px-3 py-2 text-sm font-semibold text-slate-800">Menu</summary>
+                    <nav aria-label="Mobile navigation" className="absolute right-0 top-12 z-50 flex min-w-48 flex-col rounded-xl border border-slate-200 bg-white p-2 shadow-lg">
+                        {navLinks.map((link) => (
+                            <Link key={link.label} href={link.href} className="rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-[#0099cc]">{link.label}</Link>
+                        ))}
+                    </nav>
+                </details>
+
                 {/* Right CTA Button */}
                 <div className="flex items-center gap-3">
                     <Link
-                        href="/contact"
+                        href="/#contact"
                         className="rounded-lg bg-[#0099cc] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-[#0088b6] hover:shadow active:scale-[0.98]"
                     >
                         Request Consultation

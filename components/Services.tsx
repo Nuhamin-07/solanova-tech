@@ -1,4 +1,3 @@
-import Link from "next/link";
 import ServiceCard from "@/components/ServiceCard";
 import { services } from "@/data/services";
 
@@ -17,8 +16,8 @@ export default function Services() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-                    {services.map((service, index) => (
+                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:gap-6">
+                    {services.map((service) => (
                         <ServiceCard
                             key={service.id}
                             image={service.image}
@@ -26,9 +25,6 @@ export default function Services() {
                             description={service.description}
                         />
                     ))}
-                </div>
-                <div className="mt-5 text-base leading-7 text-slate-600 sm:text-lg flex justify-end items-center">
-                    <Link href="/services" className="text-[#0099cc]">View All Services</Link>
                 </div>
             </div>
         </section>
