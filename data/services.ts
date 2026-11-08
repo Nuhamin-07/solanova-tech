@@ -1,28 +1,28 @@
-const services = [
+export const services = [
     {
-        number: "1",
-        title: "Custom Software Development",
+        id: 1,
+        title: "Custom Software",
         description:
             "Tailored solutions for your unique needs.",
-        image: "/srevices/custom-softare-development.png",
+        image: "/services/custom-software-development.png",
     },
     {
-        number: "2",
-        title: "SaaS Platform Development",
+        id: 2,
+        title: "SaaS Platform",
         description:
             "Scalable multi-tenant cloud apps.",
         image: "/services/saas-platform-development.png",
     },
     {
-        number: "3",
-        title: "Mobile App Development",
+        id: 3,
+        title: "Mobile App",
         description:
             "Native iOS & Android experiences.",
         image: "/services/mobile-app-development.png",
     },
     {
-        number: "4",
-        title: "Web Application Development",
+        id: 4,
+        title: "Web Application",
         description:
             "Modern, responsive web solutions.",
         image: "/services/web-application-development.png",
