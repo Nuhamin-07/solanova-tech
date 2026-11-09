@@ -1,18 +1,18 @@
 export const reasons = [
     {
         id: 1,
-        title: "Built around your goals",
-        description: "We shape each solution around your business, your people, and the outcomes you want to reach."
+        title: "Innovation First",
+        description: "We embrace emerging technologies and creative thinking to deliver smarter solutions that keep your business ahead."
     },
     {
         id: 2,
-        title: "A clear, collaborative process",
-        description: "You stay involved through practical planning, open communication, and regular progress."
+        title: "Reliable & Secure",
+        description: "We prioritize security, reliability, and performance to keep your business systems protected and running smoothly."
     },
     {
         id: 3,
-        title: "Engineering that can grow",
-        description: "We build dependable foundations that can adapt as your customers and operations evolve."
+        title: "Scalable Growth",
+        description: "We build flexible, future-ready solutions that grow alongside your business and adapt to your evolving needs."
     },
     {
         id: 4,

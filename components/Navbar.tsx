@@ -18,8 +18,8 @@ export default function Navbar() {
                     <Image
                         src="/solanova-logo.png"
                         alt="Solanova Technologies"
-                        width={180}
-                        height={45}
+                        width={200}
+                        height={50}
                         className="h-10 w-auto object-contain"
                         priority
                     />

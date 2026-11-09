@@ -12,7 +12,7 @@ export default function Portfolio() {
                         <h2 id="portfolio-heading" className="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">Digital products for <span className="text-[#0099cc]">real work.</span></h2>
                         <p className="mt-5 text-base leading-7 text-slate-600">A look at the kinds of business platforms and customer experiences we can create with you.</p>
                     </div>
-                    <Link href="/contact" className="inline-flex items-center gap-2 text-sm font-semibold text-[#008dbb] hover:text-[#006f94]">Discuss a project <span aria-hidden="true">→</span></Link>
+                    <Link href="/contact" className="inline-flex items-center gap-2 text-md font-semibold text-[#008dbb] hover:text-[#006f94]">Discuss a project</Link>
                 </div>
                 <div className="grid gap-6 md:grid-cols-3">
                     {projects.map((project) => (
