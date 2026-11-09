@@ -1,5 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
-import { projects } from "@/data/projects"
+import { projects } from "@/data/projects";
 
 export default function Portfolio() {
     return (
@@ -15,11 +16,20 @@ export default function Portfolio() {
                 </div>
                 <div className="grid gap-6 md:grid-cols-3">
                     {projects.map((project) => (
-                        <article key={project.type} className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+                        <article key={project.id} className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+                            <div className="relative aspect-[1.55/1] overflow-hidden bg-slate-100">
+                                <Image
+                                    src={project.image.src}
+                                    alt={project.image.alt}
+                                    fill
+                                    sizes="(min-width: 768px) 33vw, 90vw"
+                                    className="object-cover"
+                                />
+                            </div>
                             <div className="p-6">
-                                <p className="mb-3 text-xs font-bold uppercase tracking-[0.12em] text-[#008dbb]">{project.category}</p>
+                                <p className="mb-3 text-xs font-bold tracking-[0.12em] text-[#008dbb]">{project.category}</p>
                                 <h3 className="text-xl font-semibold tracking-tight text-slate-950">{project.title}</h3>
-                                <p className="mt-2 text-sm leading-6 text-slate-600">A tailored digital solution designed around business needs, customer experience, and room to grow.</p>
+                                <p className="mt-2 text-sm leading-6 text-slate-600">{project.description}</p>
                             </div>
                         </article>
                     ))}

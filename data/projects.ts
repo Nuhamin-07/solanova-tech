@@ -1,5 +1,23 @@
 export const projects = [
-    { title: "Connected business operations", category: "ERP and business systems", type: "erp" },
-    { title: "A better customer experience", category: "Web and mobile platforms", type: "mobile" },
-    { title: "Decisions with better data", category: "Custom software and analytics", type: "analytics" },
+    {
+        id: "cise-school-management",
+        category: "EdTech",
+        title: "School Management System for CISE",
+        description: "A comprehensive school management platform built for CISE, covering student records, staff management, academic administration, and automated reporting to improve operational efficiency.",
+        image: { src: "/projects/edtech-school-management-overview.png", alt: "School management system overview dashboard" },
+    },
+    {
+        id: "erpnext-import-export",
+        category: "Enterprise ERP",
+        title: "ERPNext for Import-Export Companies",
+        description: "End-to-end ERPNext implementation for import-export trading companies, covering inventory, purchasing, sales, and accounting with automated workflows to maximize efficiency and accuracy.",
+        image: { src: "/projects/erp-inventory-dashboard.png", alt: "ERP inventory and warehouse dashboard" },
+    },
+    {
+        id: "healthcare-management-platform",
+        category: "Healthcare Tech",
+        title: "Healthcare Management Platform",
+        description: "A digital healthcare solution enabling clinics and hospitals to manage patient records, appointments, and clinical workflows efficiently.",
+        image: { src: "/projects/healthcare-appointments.png", alt: "Clinic appointment scheduling interface" },
+    },
 ];
