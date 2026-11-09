@@ -25,7 +25,7 @@ export default function ServicesPage() {
                 {services.map((service, index) => {
                     const reversed = index % 2 === 1;
                     return (
-                        <section key={service.id} id={`service-${service.id}`} aria-labelledby={`service-heading-${service.id}`} className="border-b border-slate-200 py-16 sm:py-20 lg:py-24">
+                        <section key={service.id} id={`service-${service.id}`} aria-labelledby={`service-heading-${service.id}`} className="py-16 sm:py-20 lg:py-24">
                             <div className="grid items-center gap-9 lg:grid-cols-2 lg:gap-16">
                                 <div className={reversed ? "lg:order-2" : ""}>
                                     <div className="relative flex aspect-[1.35/1] items-center justify-center overflow-hidden rounded-3xl  p-8 sm:p-12">
@@ -52,9 +52,6 @@ export default function ServicesPage() {
                                             </li>
                                         ))}
                                     </ul>
-                                    <Link href="/contact" className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold text-[#008dbb] hover:text-[#006f94]">
-                                        Discuss this service
-                                    </Link>
                                 </div>
                             </div>
                         </section>
