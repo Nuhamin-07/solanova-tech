@@ -1,52 +1,28 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 
-type FormField = "name" | "email" | "subject" | "message";
-type FormErrors = Partial<Record<FormField, string>>;
+type ContactFormValues = {
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+};
 
 export default function ContactSection() {
-    const [errors, setErrors] = useState<FormErrors>({});
     const [status, setStatus] = useState("");
+    const form = useForm<ContactFormValues>({
+        defaultValues: { name: "", email: "", subject: "", message: "" },
+    });
 
-    function handleSubmit(event: FormEvent<HTMLFormElement>) {
-        event.preventDefault();
-        const form = event.currentTarget;
-        const formData = new FormData(form);
-        const name = String(formData.get("name") ?? "").trim();
-        const email = String(formData.get("email") ?? "").trim();
-        const subject = String(formData.get("subject") ?? "").trim();
-        const message = String(formData.get("message") ?? "").trim();
-        const nextErrors: FormErrors = {};
-
-        if (!name) nextErrors.name = "Please enter your name.";
-        if (!email) nextErrors.email = "Please enter your email address.";
-        else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) nextErrors.email = "Enter a valid email address.";
-        if (!subject) nextErrors.subject = "Please add a subject.";
-        if (!message) nextErrors.message = "Please tell us a little about your project.";
-        else if (message.length < 20) nextErrors.message = "Please add a little more detail (at least 20 characters).";
-
-        setErrors(nextErrors);
-        if (Object.keys(nextErrors).length > 0) {
-            setStatus("Please review the highlighted fields.");
-            return;
-        }
-
-        setStatus(`Thanks, ${name}. Your message passed validation. This form is ready to connect to an email service.`);
+    function handleValidSubmit(values: ContactFormValues) {
+        setStatus(`Thanks, ${values.name.trim()}!`);
         form.reset();
     }
 
-    function clearError(field: FormField) {
-        setErrors((current) => {
-            if (!current[field]) return current;
-            const next = { ...current };
-            delete next[field];
-            return next;
-        });
-        setStatus("");
-    }
-
-    const fieldClass = "mt-2 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-[#0099cc] focus:ring-2 focus:ring-cyan-100";
+    const fieldClass = "mt-2 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-[#0099cc] focus:ring-2 focus:ring-cyan-100 aria-invalid:border-red-500 aria-invalid:focus:border-red-500 aria-invalid:focus:ring-red-100";
 
     return (
         <section id="contact" aria-labelledby="contact-heading" className="bg-white py-20 sm:py-24">
@@ -61,7 +37,7 @@ export default function ContactSection() {
                     <aside className="bg-slate-950 p-7 text-white sm:p-10 lg:p-12">
                         <h3 className="text-2xl font-semibold">Start a conversation</h3>
                         <p className="mt-3 text-sm leading-6 text-slate-300">Tell us what your business is working toward. We’ll explore how technology can help.</p>
-                        <div className="mt-10 border-t border-slate-700 pt-7">
+                        <div className="mt-10 pt-7">
                             <p className="text-xs font-bold uppercase tracking-[0.16em] text-cyan-300">Where we work</p>
                             <p className="mt-3 text-base font-medium">Ethiopia and across Africa</p>
                             <p className="mt-2 text-sm leading-6 text-slate-300">We partner with businesses to build software, ERP systems, web and mobile applications, and technical solutions.</p>
@@ -72,36 +48,85 @@ export default function ContactSection() {
                         </div>
                     </aside>
 
-                    <form noValidate onSubmit={handleSubmit} className="p-7 sm:p-10 lg:p-12">
-                        <div className="grid gap-5 sm:grid-cols-2">
-                            <div>
-                                <label htmlFor="contact-name" className="text-sm font-semibold text-slate-800">Name <span className="text-[#008dbb]">*</span></label>
-                                <input id="contact-name" name="name" autoComplete="name" required aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? "contact-name-error" : undefined} onChange={() => clearError("name")} className={`${fieldClass} ${errors.name ? "border-red-500 focus:border-red-500 focus:ring-red-100" : ""}`} placeholder="Your name" />
-                                {errors.name && <p id="contact-name-error" className="mt-1.5 text-sm text-red-600">{errors.name}</p>}
+                    <Form {...form}>
+                        <form noValidate onSubmit={form.handleSubmit(handleValidSubmit)} className="p-7 sm:p-10 lg:p-12">
+                            <div className="grid gap-5 sm:grid-cols-2">
+                                <FormField
+                                    control={form.control}
+                                    name="name"
+                                    rules={{
+                                        required: "Please enter your name.",
+                                        validate: (value) => value.trim().length > 0 || "Please enter your name.",
+                                    }}
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Name <span className="text-[#008dbb]">*</span></FormLabel>
+                                            <FormControl><input {...field} autoComplete="name" placeholder="John Doe" className={fieldClass} /></FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="email"
+                                    rules={{
+                                        required: "Please enter your email address.",
+                                        pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Enter a valid email address." },
+                                    }}
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Email <span className="text-[#008dbb]">*</span></FormLabel>
+                                            <FormControl><input {...field} type="email" autoComplete="email" placeholder="john@gmail.com" className={fieldClass} /></FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
                             </div>
-                            <div>
-                                <label htmlFor="contact-email" className="text-sm font-semibold text-slate-800">Email <span className="text-[#008dbb]">*</span></label>
-                                <input id="contact-email" name="email" type="email" autoComplete="email" required aria-invalid={Boolean(errors.email)} aria-describedby={errors.email ? "contact-email-error" : undefined} onChange={() => clearError("email")} className={`${fieldClass} ${errors.email ? "border-red-500 focus:border-red-500 focus:ring-red-100" : ""}`} placeholder="you@company.com" />
-                                {errors.email && <p id="contact-email-error" className="mt-1.5 text-sm text-red-600">{errors.email}</p>}
+
+                            <FormField
+                                control={form.control}
+                                name="subject"
+                                rules={{
+                                    required: "Please add a subject.",
+                                    validate: (value) => value.trim().length > 0 || "Please add a subject.",
+                                }}
+                                render={({ field }) => (
+                                    <FormItem className="mt-5">
+                                        <FormLabel>Subject <span className="text-[#008dbb]">*</span></FormLabel>
+                                        <FormControl><input {...field} placeholder="What would you like to discuss?" className={fieldClass} /></FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+
+                            <FormField
+                                control={form.control}
+                                name="message"
+                                rules={{
+                                    required: "Please tell us a little about your project.",
+                                    validate: (value) => {
+                                        const message = value.trim();
+                                        if (!message) return "Please tell us a little about your project.";
+                                        return message.length >= 20 || "Please add a little more detail (at least 20 characters).";
+                                    },
+                                }}
+                                render={({ field }) => (
+                                    <FormItem className="mt-5">
+                                        <FormLabel>Message <span className="text-[#008dbb]">*</span></FormLabel>
+                                        <FormControl><textarea {...field} rows={5} placeholder="Tell us about your project, goals, or challenge..." className={`${fieldClass} resize-y`} /></FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+
+                            <div className="mt-6 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+                                <button type="submit" className="inline-flex items-center gap-2 rounded-lg bg-[#0099cc] px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0088b6] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0099cc]">
+                                    Send your message
+                                </button>
+                                <p aria-live="polite" className="text-sm text-slate-600">{status}</p>
                             </div>
-                        </div>
-                        <div className="mt-5">
-                            <label htmlFor="contact-subject" className="text-sm font-semibold text-slate-800">Subject <span className="text-[#008dbb]">*</span></label>
-                            <input id="contact-subject" name="subject" required aria-invalid={Boolean(errors.subject)} aria-describedby={errors.subject ? "contact-subject-error" : undefined} onChange={() => clearError("subject")} className={`${fieldClass} ${errors.subject ? "border-red-500 focus:border-red-500 focus:ring-red-100" : ""}`} placeholder="What would you like to discuss?" />
-                            {errors.subject && <p id="contact-subject-error" className="mt-1.5 text-sm text-red-600">{errors.subject}</p>}
-                        </div>
-                        <div className="mt-5">
-                            <label htmlFor="contact-message" className="text-sm font-semibold text-slate-800">Message <span className="text-[#008dbb]">*</span></label>
-                            <textarea id="contact-message" name="message" rows={5} required aria-invalid={Boolean(errors.message)} aria-describedby={errors.message ? "contact-message-error" : undefined} onChange={() => clearError("message")} className={`${fieldClass} resize-y ${errors.message ? "border-red-500 focus:border-red-500 focus:ring-red-100" : ""}`} placeholder="Tell us about your project, goals, or challenge..." />
-                            {errors.message && <p id="contact-message-error" className="mt-1.5 text-sm text-red-600">{errors.message}</p>}
-                        </div>
-                        <div className="mt-6 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-                            <button type="submit" className="inline-flex items-center gap-2 rounded-lg bg-[#0099cc] px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0088b6] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0099cc]">
-                                Send your message <span aria-hidden="true">→</span>
-                            </button>
-                            <p aria-live="polite" className={`text-sm ${Object.keys(errors).length ? "text-red-600" : "text-slate-600"}`}>{status}</p>
-                        </div>
-                    </form>
+                        </form>
+                    </Form>
                 </div>
             </div>
         </section>
