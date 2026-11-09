@@ -1,6 +1,6 @@
+import Link from "next/link";
 import ServiceCard from "@/components/ServiceCard";
 import { services } from "@/data/services";
-import Link from "next/link";
 
 export default function Services() {
     return (
@@ -21,9 +21,8 @@ export default function Services() {
                     {services.map((service) => (
                         <ServiceCard
                             key={service.id}
-                            image={service.image}
-                            title={service.title}
-                            description={service.description}
+                            service={service}
+                            compact
                         />
                     ))}
                 </div>

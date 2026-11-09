@@ -31,8 +31,8 @@ export default function ServicesPage() {
                                     <div className="relative flex aspect-[1.35/1] items-center justify-center overflow-hidden rounded-3xl  p-8 sm:p-12">
                                         <div aria-hidden="true" className="absolute h-48 w-48 rounded-full bg-white/70 blur-3xl" />
                                         <Image
-                                            src={service.image}
-                                            alt={service.title}
+                                            src={service.image.src}
+                                            alt={service.image.alt}
                                             width={420}
                                             height={320}
                                             sizes="(min-width: 1024px) 45vw, 90vw"

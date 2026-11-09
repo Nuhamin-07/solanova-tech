@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const footerLinks = [
-    { label: "Services", href: "/#services" },
+    { label: "Services", href: "/services" },
     { label: "Why choose us", href: "/#why-us" },
     { label: "Featured projects", href: "/#portfolio" },
     { label: "Contact", href: "/contact" },
