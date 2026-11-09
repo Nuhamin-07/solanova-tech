@@ -119,5 +119,3 @@ Create and run a local production build with:
 npm run build
 npm run start
 ```
-
-The site can then be deployed to a host that supports Next.js App Router applications. Configure an email or form backend separately if the contact form should deliver submissions.
