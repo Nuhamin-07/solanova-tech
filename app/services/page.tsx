@@ -41,7 +41,6 @@ export default function ServicesPage() {
                                     </div>
                                 </div>
                                 <div className={reversed ? "lg:order-1" : ""}>
-                                    <p className="mb-3 text-sm font-bold uppercase tracking-[0.18em] text-[#0099cc]">Service {String(service.id).padStart(2, "0")}</p>
                                     <h2 id={`service-heading-${service.id}`} className="text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl lg:text-4xl">{service.title}</h2>
                                     <p className="mt-5 text-base leading-7 text-slate-600">{service.overview}</p>
                                     <ul className="mt-6 space-y-3">

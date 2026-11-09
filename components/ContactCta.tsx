@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function ContactCta() {
     return (
-        <section aria-labelledby="contact-cta-heading" className="bg-white px-6 py-16 sm:px-8 sm:py-20 lg:px-12">
+        <section id="contact-cta" aria-labelledby="contact-cta-heading" className="bg-white px-6 py-16 sm:px-8 sm:py-20 lg:px-12">
             <div className="relative mx-auto max-w-7xl overflow-hidden rounded-3xl bg-slate-950 px-7 py-10 shadow-xl shadow-slate-900/10 sm:px-12 sm:py-14 lg:px-16 lg:py-16">
                 <div aria-hidden="true" className="pointer-events-none absolute -right-20 -top-36 h-96 w-96 rounded-full bg-cyan-500/20 blur-3xl" />
                 <div aria-hidden="true" className="pointer-events-none absolute bottom-0 right-0 h-px w-2/3 bg-gradient-to-l from-cyan-400/70 to-transparent" />
