@@ -12,7 +12,6 @@ export type Service = {
 
 export type ServiceCardProps = {
     service: Service;
-    compact?: boolean;
 };
 
 export const services: Service[] = [

@@ -22,7 +22,6 @@ export default function Services() {
                         <ServiceCard
                             key={service.id}
                             service={service}
-                            compact
                         />
                     ))}
                 </div>
