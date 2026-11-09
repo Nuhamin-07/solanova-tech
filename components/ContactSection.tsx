@@ -61,7 +61,7 @@ export default function ContactSection() {
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormLabel>Name <span className="text-[#008dbb]">*</span></FormLabel>
-                                            <FormControl><input {...field} autoComplete="name" placeholder="John Doe" className={fieldClass} /></FormControl>
+                                            <FormControl><input {...field} autoComplete="name" placeholder="Enter your name" className={fieldClass} /></FormControl>
                                             <FormMessage />
                                         </FormItem>
                                     )}
@@ -76,7 +76,7 @@ export default function ContactSection() {
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormLabel>Email <span className="text-[#008dbb]">*</span></FormLabel>
-                                            <FormControl><input {...field} type="email" autoComplete="email" placeholder="john@gmail.com" className={fieldClass} /></FormControl>
+                                            <FormControl><input {...field} type="email" autoComplete="email" placeholder="Enter you email" className={fieldClass} /></FormControl>
                                             <FormMessage />
                                         </FormItem>
                                     )}

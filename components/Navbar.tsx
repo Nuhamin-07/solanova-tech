@@ -124,7 +124,7 @@ export default function Navbar() {
                                 href={link.href}
                                 onClick={closeMobileMenu}
                                 aria-current={activeKey === link.key ? "page" : undefined}
-                                className={`rounded-r-lg border-l-2 px-3 py-2.5 text-sm font-medium transition-colors ${activeKey === link.key ? "border-[#0099cc] bg-cyan-50 text-[#0099cc]" : "border-transparent text-slate-700 hover:bg-slate-50 hover:text-[#0099cc]"}`}
+                                className={`rounded-r-lg px-3 py-2.5 text-sm font-medium transition-colors ${activeKey === link.key ? "bg-cyan-50 text-[#0099cc]" : "border-transparent text-slate-700 hover:bg-slate-50 hover:text-[#0099cc]"}`}
                             >
                                 {link.label}
                             </Link>
