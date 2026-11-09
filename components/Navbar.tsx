@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,7 +7,7 @@ export default function Navbar() {
         { label: "Services", href: "/#services" },
         { label: "Why choose us", href: "/#why-us" },
         { label: "Projects", href: "/#portfolio" },
-        { label: "Contact", href: "/#contact" },
+        { label: "Contact", href: "/contact" },
     ];
 
     return (
@@ -54,7 +52,7 @@ export default function Navbar() {
                 {/* Right CTA Button */}
                 <div className="flex items-center gap-3">
                     <Link
-                        href="/#contact"
+                        href="/contact"
                         className="rounded-lg bg-[#0099cc] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-[#0088b6] hover:shadow active:scale-[0.98]"
                     >
                         Request Consultation

@@ -5,7 +5,7 @@ const footerLinks = [
     { label: "Services", href: "/#services" },
     { label: "Why choose us", href: "/#why-us" },
     { label: "Featured projects", href: "/#portfolio" },
-    { label: "Contact", href: "/#contact" },
+    { label: "Contact", href: "/contact" },
 ];
 
 const currentYear = new Date().getFullYear();

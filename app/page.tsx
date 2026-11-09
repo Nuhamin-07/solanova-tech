@@ -2,7 +2,7 @@ import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import WhyUs from "@/components/WhyUs";
 import Portfolio from "@/components/Portfolio";
-import ContactSection from "@/components/ContactSection";
+import ContactCta from "@/components/ContactCta";
 
 export default function Home() {
   return (
@@ -11,7 +11,7 @@ export default function Home() {
       <Services />
       <WhyUs />
       <Portfolio />
-      <ContactSection />
+      <ContactCta />
     </main>
   );
 }
