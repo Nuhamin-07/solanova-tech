@@ -1,9 +1,4 @@
-const reasons = [
-    { number: "01", title: "Built around your goals", description: "We shape each solution around your business, your people, and the outcomes you want to reach." },
-    { number: "02", title: "A clear, collaborative process", description: "You stay involved through practical planning, open communication, and regular progress." },
-    { number: "03", title: "Engineering that can grow", description: "We build dependable foundations that can adapt as your customers and operations evolve." },
-    { number: "04", title: "A partner beyond launch", description: "Our work continues through refinement, technical guidance, and ongoing support." },
-];
+import { reasons } from "@/data/why-us";
 
 export default function WhyUs() {
     return (
@@ -20,8 +15,8 @@ export default function WhyUs() {
                 </div>
                 <div className="divide-y divide-slate-200 border-y border-slate-200">
                     {reasons.map((reason) => (
-                        <article key={reason.number} className="grid gap-3 py-6 sm:grid-cols-[64px_1fr] sm:gap-5 sm:py-7">
-                            <span className="text-sm font-semibold tracking-wider text-[#0099cc]">{reason.number}</span>
+                        <article key={reason.id} className="grid gap-3 py-6 sm:grid-cols-[64px_1fr] sm:gap-5 sm:py-7 items-center">
+                            <span className="font-semibold tracking-wider text-[#0099cc]">{reason.id}</span>
                             <div>
                                 <h3 className="text-lg font-semibold text-slate-950 sm:text-xl">{reason.title}</h3>
                                 <p className="mt-2 max-w-xl text-sm leading-6 text-slate-600 sm:text-base">{reason.description}</p>
